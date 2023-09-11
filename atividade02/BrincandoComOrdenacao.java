@@ -23,7 +23,7 @@ public class BrincandoComOrdenacao {
 		long depois = System.nanoTime();
 		
 
-		System.out.println(o.checaVetorOrdenado(vetor15));
+		System.out.println(o.bubbleSort(vetor5Random));
 		
 		
 		

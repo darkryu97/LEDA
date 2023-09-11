@@ -45,7 +45,33 @@ public class Ordenacao implements Ordenacao_IF {
 
     @Override
     public long bubbleSort(int[] numeros) {
-        return 0;
+        int[] array = numeros;
+        int n = numeros.length;
+        int aux = 0;
+        long media = 0,soma = 0,antes = 0,depois = 0,cont = 0;
+
+        while(cont<50){
+            antes = System.nanoTime();
+            for (int i=0;i<n;i++){
+                for (int j=0;j<n-i-1;j++){
+                    if (numeros[j]>numeros[j+1]){
+                        aux = numeros[j];
+                        numeros[j] = numeros[j+1];
+                        numeros[j+1] = aux;
+                    }
+                }
+            }
+            depois = System.nanoTime();
+            numeros = array;
+            soma += depois-antes;
+            cont++;
+        }
+        media = soma/50;
+
+        if (checaVetorOrdenado(numeros)){
+            return media;
+        }
+        return -1;
     }
 
     @Override
