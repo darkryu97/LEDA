@@ -22,9 +22,9 @@ public class BrincandoComOrdenacao {
 		
 		for (int i=0;i<size;i++) {
 		    vetorRandom[i] = Lista.toArray(new Integer[0])[i].intValue();
-		    System.out.printf("%d %d %d\n",vetorStandard[i],vetorReverse[i],vetorRandom[i]);
+		    //System.out.printf("%d %d %d\n",vetorStandard[i],vetorReverse[i],vetorRandom[i]);
 		}
-		System.out.println("------------");
+		//System.out.println("------------");
 		
 		int[][] matriz = new int[3][size];
 		matriz[0] = vetorStandard;
