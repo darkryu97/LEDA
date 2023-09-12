@@ -51,6 +51,7 @@ public class Ordenacao implements Ordenacao_IF {
         long media = 0,soma = 0,antes = 0,depois = 0,cont = 0;
 
         while(cont<50){
+            numeros = array;
             antes = System.nanoTime();
             for (int i=0;i<n;i++){
                 for (int j=0;j<n-i-1;j++){
@@ -62,13 +63,12 @@ public class Ordenacao implements Ordenacao_IF {
                 }
             }
             depois = System.nanoTime();
-            numeros = array;
             soma += depois-antes;
             cont++;
         }
         media = soma/50;
 
-        if (checaVetorOrdenado(numeros)){
+        if (checaVetorOrdenado(array)){
             return media;
         }
         return -1;
@@ -76,12 +76,67 @@ public class Ordenacao implements Ordenacao_IF {
 
     @Override
     public long selectionSort(int[] numeros) {
-        return 0;
+        int[] array = numeros;
+        int n = numeros.length;
+        int aux = 0;
+        long media = 0,soma = 0,antes = 0,depois = 0,cont = 0;
+        while(cont<50) {
+            numeros = array;
+            antes = System.nanoTime();
+            for (int i = 0; i < n - 1; i++) {
+                int menor = i;
+                for (int j = i + 1; j < n; j++) {
+                    if (numeros[j] < numeros[menor]) {
+                        menor = j;
+                    }
+                }
+                aux = numeros[i];
+                numeros[i] = numeros[menor];
+                numeros[menor] = aux;
+            }
+            depois = System.nanoTime();
+            soma += depois-antes;
+            cont++;
+        }
+        media = soma/50;
+        if (checaVetorOrdenado(array)){
+            return media;
+        }
+        return -1;
     }
 
     @Override
     public long insertionSort(int[] numeros) {
-        return 0;
+        int[] array = numeros;
+        int n = numeros.length;
+        int aux = 0,key = 0;
+        long media = 0,soma = 0,antes = 0,depois = 0,cont = 0;
+        while(cont<50) {
+            numeros = array;
+            antes = System.nanoTime();
+            for (int i = 1; i < n; i++) {
+                key = numeros[i];
+                int j = i - 1;
+
+                // Move os elementos maiores que a chave para a direita
+                while (j >= 0 && numeros[j] > key) {
+                    numeros[j + 1] = numeros[j];
+                    j--;
+                }
+
+                // Insere a chave na posição correta
+                numeros[j + 1] = key;
+            }
+
+            depois = System.nanoTime();
+            soma += depois-antes;
+            cont++;
+        }
+        media = soma/50;
+        if (checaVetorOrdenado(array)){
+            return media;
+        }
+        return -1;
     }
 
     @Override
