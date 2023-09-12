@@ -1,38 +1,6 @@
 package atividade02;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-
 public class Ordenacao implements Ordenacao_IF {
-
-    public static int[][] criarVetores(int size){
-        int[] vetorStandard = new int[size];
-        int[] vetorReverse = new int[size];
-        int[] vetorRandom = new int[size];
-        Integer[] vetorReverseInteger = new Integer[size];
-        for (int i=0;i<size;i++) {
-            vetorStandard[i] = i+1;
-            vetorReverse[i] = size-i;
-            vetorReverseInteger[i] = size-i;
-        }
-
-        List<Integer> Lista = new ArrayList<>(Arrays.asList(vetorReverseInteger));
-        Collections.shuffle(Lista);
-
-        for (int i=0;i<size;i++) {
-            vetorRandom[i] = Lista.toArray(new Integer[0])[i].intValue();
-            //System.out.printf("%d %d %d\n",vetorStandard[i],vetorReverse[i],vetorRandom[i]);
-        }
-        //System.out.println("------------");
-
-        int[][] matriz = new int[3][size];
-        matriz[0] = vetorStandard;
-        matriz[1] = vetorReverse;
-        matriz[2] = vetorRandom;
-        return matriz;
-    }
     @Override
     public boolean checaVetorOrdenado(int[] numeros) {
         for (int i=0;i<numeros.length;i++){
@@ -67,7 +35,7 @@ public class Ordenacao implements Ordenacao_IF {
             cont++;
         }
         media = soma/50;
-        if (checaVetorOrdenado(array)){
+        if (checaVetorOrdenado(numeros)){
             return media;
         }
         return -1;
@@ -116,17 +84,12 @@ public class Ordenacao implements Ordenacao_IF {
             for (int i = 1; i < n; i++) {
                 key = numeros[i];
                 int j = i - 1;
-
-                // Move os elementos maiores que a chave para a direita
                 while (j >= 0 && numeros[j] > key) {
                     numeros[j + 1] = numeros[j];
                     j--;
                 }
-
-                // Insere a chave na posição correta
                 numeros[j + 1] = key;
             }
-
             depois = System.nanoTime();
             soma += depois-antes;
             cont++;
