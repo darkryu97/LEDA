@@ -45,13 +45,13 @@ public class Ordenacao implements Ordenacao_IF {
 
     @Override
     public long bubbleSort(int[] numeros) {
-        int[] array = numeros;
+        int[] array = numeros.clone();
         int n = numeros.length;
         int aux = 0;
         long media = 0,soma = 0,antes = 0,depois = 0,cont = 0;
 
         while(cont<50){
-            numeros = array;
+            numeros = array.clone();
             antes = System.nanoTime();
             for (int i=0;i<n;i++){
                 for (int j=0;j<n-i-1;j++){
@@ -67,7 +67,6 @@ public class Ordenacao implements Ordenacao_IF {
             cont++;
         }
         media = soma/50;
-
         if (checaVetorOrdenado(array)){
             return media;
         }
@@ -76,12 +75,12 @@ public class Ordenacao implements Ordenacao_IF {
 
     @Override
     public long selectionSort(int[] numeros) {
-        int[] array = numeros;
+        int[] array = numeros.clone();
         int n = numeros.length;
         int aux = 0;
         long media = 0,soma = 0,antes = 0,depois = 0,cont = 0;
         while(cont<50) {
-            numeros = array;
+            numeros = array.clone();
             antes = System.nanoTime();
             for (int i = 0; i < n - 1; i++) {
                 int menor = i;
@@ -99,7 +98,7 @@ public class Ordenacao implements Ordenacao_IF {
             cont++;
         }
         media = soma/50;
-        if (checaVetorOrdenado(array)){
+        if (checaVetorOrdenado(numeros)){
             return media;
         }
         return -1;
@@ -107,12 +106,12 @@ public class Ordenacao implements Ordenacao_IF {
 
     @Override
     public long insertionSort(int[] numeros) {
-        int[] array = numeros;
+        int[] array = numeros.clone();
         int n = numeros.length;
         int aux = 0,key = 0;
         long media = 0,soma = 0,antes = 0,depois = 0,cont = 0;
         while(cont<50) {
-            numeros = array;
+            numeros = array.clone();
             antes = System.nanoTime();
             for (int i = 1; i < n; i++) {
                 key = numeros[i];
@@ -133,7 +132,7 @@ public class Ordenacao implements Ordenacao_IF {
             cont++;
         }
         media = soma/50;
-        if (checaVetorOrdenado(array)){
+        if (checaVetorOrdenado(numeros)){
             return media;
         }
         return -1;

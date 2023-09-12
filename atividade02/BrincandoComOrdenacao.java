@@ -21,9 +21,11 @@ public class BrincandoComOrdenacao {
 		int[] vetor5Reverse = matriz[1];
 		int[] vetor5Random = matriz[2];
 		long depois = System.nanoTime();
+
+
 		
 
-		System.out.println(o.bubbleSort(vetor5Reverse));
+		System.out.println(o.selectionSort(vetor5Random));
 		
 		
 		
