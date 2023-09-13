@@ -33,7 +33,10 @@ public class BrincandoComOrdenacao {
 		return matriz;
 	}
 	public static void main(String[] args) {
+		//Instancia do objeto do tipo Ordenacao
 		Ordenacao_IF o = new Ordenacao();
+
+		//Criação dos vetores
 		int[][] matriz = criarVetores(15000);
 		int[] vetor15 = matriz[0];
 		int[] vetor15Reverse = matriz[1];
@@ -46,37 +49,55 @@ public class BrincandoComOrdenacao {
 		int[] vetor5 = matriz[0];
 		int[] vetor5Reverse = matriz[1];
 		int[] vetor5Random = matriz[2];
-		long depois = System.nanoTime();
+		//Criação do array temporal
+		long[] tempos = new long[72];
+		//Contador do while
+		int cont = 0;
+		//Nanotime
+		long antes = 0,depois = 0;
+		antes = System.nanoTime();
+		while(cont<50){
+			//bubble sort
+			tempos[0] += o.bubbleSort(vetor5.clone());
+			tempos[1] += o.bubbleSort(vetor5Reverse.clone());
+			tempos[2] += o.bubbleSort(vetor5Random.clone());
+			tempos[3] += o.bubbleSort(vetor10.clone());
+			tempos[4] += o.bubbleSort(vetor10Reverse.clone());
+			tempos[5] += o.bubbleSort(vetor10Random.clone());
+			tempos[6] += o.bubbleSort(vetor15.clone());
+			tempos[7] += o.bubbleSort(vetor15Reverse.clone());
+			tempos[8] += o.bubbleSort(vetor15Random.clone());
 
-		System.out.println(o.bubbleSort(vetor5));
-		System.out.println(o.bubbleSort(vetor5Reverse));
-		System.out.println(o.bubbleSort(vetor5Random));
-		System.out.println(o.bubbleSort(vetor10));
-		System.out.println(o.bubbleSort(vetor10Reverse));
-		System.out.println(o.bubbleSort(vetor10Random));
-		System.out.println(o.bubbleSort(vetor15));
-		System.out.println(o.bubbleSort(vetor15Reverse));
-		System.out.println(o.bubbleSort(vetor15Random)+"\n");
+			//selection sort
+			tempos[9] += o.selectionSort(vetor5.clone());
+			tempos[10] += o.selectionSort(vetor5Reverse.clone());
+			tempos[11] += o.selectionSort(vetor5Random.clone());
+			tempos[12] += o.selectionSort(vetor10.clone());
+			tempos[13] += o.selectionSort(vetor10Reverse.clone());
+			tempos[14] += o.selectionSort(vetor10Random.clone());
+			tempos[15] += o.selectionSort(vetor15.clone());
+			tempos[16] += o.selectionSort(vetor15Reverse.clone());
+			tempos[17] += o.selectionSort(vetor15Random.clone());
 
-		System.out.println(o.selectionSort(vetor5));
-		System.out.println(o.selectionSort(vetor5Reverse));
-		System.out.println(o.selectionSort(vetor5Random));
-		System.out.println(o.selectionSort(vetor10));
-		System.out.println(o.selectionSort(vetor10Reverse));
-		System.out.println(o.selectionSort(vetor10Random));
-		System.out.println(o.selectionSort(vetor15));
-		System.out.println(o.selectionSort(vetor15Reverse));
-		System.out.println(o.selectionSort(vetor15Random)+"\n");
+			//insertion sort
+			tempos[18] += o.insertionSort(vetor5.clone());
+			tempos[19] += o.insertionSort(vetor5Reverse.clone());
+			tempos[20] += o.insertionSort(vetor5Random.clone());
+			tempos[21] += o.insertionSort(vetor10.clone());
+			tempos[22] += o.insertionSort(vetor10Reverse.clone());
+			tempos[23] += o.insertionSort(vetor10Random.clone());
+			tempos[24] += o.insertionSort(vetor15.clone());
+			tempos[25] += o.insertionSort(vetor15Reverse.clone());
+			tempos[26] += o.insertionSort(vetor15Random.clone());
+			cont++;
+		}
 
-		System.out.println(o.insertionSort(vetor5));
-		System.out.println(o.insertionSort(vetor5Reverse));
-		System.out.println(o.insertionSort(vetor5Random));
-		System.out.println(o.insertionSort(vetor10));
-		System.out.println(o.insertionSort(vetor10Reverse));
-		System.out.println(o.insertionSort(vetor10Random));
-		System.out.println(o.insertionSort(vetor15));
-		System.out.println(o.insertionSort(vetor15Reverse));
-		System.out.println(o.insertionSort(vetor15Random)+"\n");
+		//For para impressão dos valores
+		for (int i=0;i<9;i++){
+			System.out.println(tempos[i]/50+" "+tempos[i+9]/50+" "+tempos[i+18]);
+		}
+		depois = System.nanoTime();
+		System.out.println(depois-antes);
 	}
 
 }

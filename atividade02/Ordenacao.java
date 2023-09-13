@@ -13,42 +13,31 @@ public class Ordenacao implements Ordenacao_IF {
 
     @Override
     public long bubbleSort(int[] numeros) {
-        int[] array = numeros.clone();
         int n = numeros.length;
         int aux = 0;
-        long media = 0,soma = 0,antes = 0,depois = 0,cont = 0;
-
-        while(cont<50){
-            numeros = array.clone();
-            antes = System.nanoTime();
-            for (int i=0;i<n;i++){
-                for (int j=0;j<n-i-1;j++){
-                    if (numeros[j]>numeros[j+1]){
-                        aux = numeros[j];
-                        numeros[j] = numeros[j+1];
-                        numeros[j+1] = aux;
-                    }
+        long antes = 0,depois = 0;
+        antes = System.nanoTime();
+        for (int i=0;i<n;i++){
+            for (int j=0;j<n-i-1;j++){
+                if (numeros[j]>numeros[j+1]){
+                    aux = numeros[j];
+                    numeros[j] = numeros[j+1];
+                    numeros[j+1] = aux;
                 }
             }
-            depois = System.nanoTime();
-            soma += depois-antes;
-            cont++;
         }
-        media = soma/50;
+        depois = System.nanoTime();
         if (checaVetorOrdenado(numeros)){
-            return media;
+            return depois-antes;
         }
         return -1;
     }
 
     @Override
     public long selectionSort(int[] numeros) {
-        int[] array = numeros.clone();
         int n = numeros.length;
         int aux = 0;
-        long media = 0,soma = 0,antes = 0,depois = 0,cont = 0;
-        while(cont<50) {
-            numeros = array.clone();
+        long antes = 0,depois = 0;
             antes = System.nanoTime();
             for (int i = 0; i < n - 1; i++) {
                 int menor = i;
@@ -62,24 +51,17 @@ public class Ordenacao implements Ordenacao_IF {
                 numeros[menor] = aux;
             }
             depois = System.nanoTime();
-            soma += depois-antes;
-            cont++;
-        }
-        media = soma/50;
         if (checaVetorOrdenado(numeros)){
-            return media;
+            return depois-antes;
         }
         return -1;
     }
 
     @Override
     public long insertionSort(int[] numeros) {
-        int[] array = numeros.clone();
         int n = numeros.length;
-        int aux = 0,key = 0;
-        long media = 0,soma = 0,antes = 0,depois = 0,cont = 0;
-        while(cont<50) {
-            numeros = array.clone();
+        int key = 0;
+        long antes = 0,depois = 0;
             antes = System.nanoTime();
             for (int i = 1; i < n; i++) {
                 key = numeros[i];
@@ -91,12 +73,8 @@ public class Ordenacao implements Ordenacao_IF {
                 numeros[j + 1] = key;
             }
             depois = System.nanoTime();
-            soma += depois-antes;
-            cont++;
-        }
-        media = soma/50;
         if (checaVetorOrdenado(numeros)){
-            return media;
+            return depois-antes;
         }
         return -1;
     }
