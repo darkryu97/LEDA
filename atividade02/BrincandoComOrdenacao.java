@@ -89,12 +89,32 @@ public class BrincandoComOrdenacao {
 			tempos[24] += o.insertionSort(vetor15.clone());
 			tempos[25] += o.insertionSort(vetor15Reverse.clone());
 			tempos[26] += o.insertionSort(vetor15Random.clone());
+
+			tempos[27] += o.mergeSort(vetor5.clone());
+			tempos[28] += o.mergeSort(vetor5Reverse.clone());
+			tempos[29] += o.mergeSort(vetor5Random.clone());
+			tempos[30] += o.mergeSort(vetor10.clone());
+			tempos[31] += o.mergeSort(vetor10Reverse.clone());
+			tempos[32] += o.mergeSort(vetor10Random.clone());
+			tempos[33] += o.mergeSort(vetor15.clone());
+			tempos[34] += o.mergeSort(vetor15Reverse.clone());
+			tempos[35] += o.mergeSort(vetor15Random.clone());
+
+			tempos[36] += o.quickSort(vetor5.clone());
+			tempos[37] += o.quickSort(vetor5Reverse.clone());
+			tempos[38] += o.quickSort(vetor5Random.clone());
+			tempos[39] += o.quickSort(vetor10.clone());
+			tempos[40] += o.quickSort(vetor10Reverse.clone());
+			tempos[41] += o.quickSort(vetor10Random.clone());
+			tempos[42] += o.quickSort(vetor15.clone());
+			tempos[43] += o.quickSort(vetor15Reverse.clone());
+			tempos[44] += o.quickSort(vetor15Random.clone());
 			cont++;
 		}
 
 		//For para impressão dos valores
 		for (int i=0;i<9;i++){
-			System.out.println(tempos[i]/50+" "+tempos[i+9]/50+" "+tempos[i+18]);
+			System.out.println(tempos[i]/50+" "+tempos[i+9]/50+" "+tempos[i+18]/50+" "+tempos[i+27]/50+" "+tempos[i+36]/50);
 		}
 		depois = System.nanoTime();
 		System.out.println(depois-antes);

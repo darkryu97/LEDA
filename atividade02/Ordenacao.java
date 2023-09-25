@@ -62,7 +62,7 @@ public class Ordenacao implements Ordenacao_IF {
         int n = numeros.length;
         int key = 0;
         long antes = 0,depois = 0;
-            antes = System.nanoTime();
+        antes = System.nanoTime();
             for (int i = 1; i < n; i++) {
                 key = numeros[i];
                 int j = i - 1;
@@ -81,12 +81,107 @@ public class Ordenacao implements Ordenacao_IF {
 
     @Override
     public long mergeSort(int[] numeros) {
+        long antes = 0,depois = 0;
+        antes = System.nanoTime();
+        mergeSortAux(numeros);
+        depois = System.nanoTime();
+        if (checaVetorOrdenado(numeros)){
+            return depois-antes;
+        }
         return 0;
+    }
+
+    public static void mergeSortAux(int[] A) {
+        int n = A.length;
+        if (n <= 1) {
+            return;
+        }
+
+        int mid = n / 2;
+        int[] left = new int[mid];
+        int[] right = new int[n - mid];
+
+        // Copie os elementos para os subarrays esquerdo e direito
+        for (int i = 0; i < mid; i++) {
+            left[i] = A[i];
+        }
+        for (int i = mid; i < n; i++) {
+            right[i - mid] = A[i];
+        }
+
+        // Chame o mergeSort recursivamente nos subarrays esquerdo e direito
+        mergeSortAux(left);
+        mergeSortAux(right);
+
+        // Merge os dois subarrays ordenados
+        merge(left, right, A);
+    }
+
+    public static void merge(int[] left, int[] right, int[] A) {
+        int nL = left.length;
+        int nR = right.length;
+        int i = 0, j = 0, k = 0;
+
+        while (i < nL && j < nR) {
+            if (left[i] <= right[j]) {
+                A[k++] = left[i++];
+            } else {
+                A[k++] = right[j++];
+            }
+        }
+
+        while (i < nL) {
+            A[k++] = left[i++];
+        }
+
+        while (j < nR) {
+            A[k++] = right[j++];
+        }
     }
 
     @Override
     public long quickSort(int[] numeros) {
+        long antes = 0,depois = 0;
+        antes = System.nanoTime();
+        quickSortAux(numeros,0,numeros.length-1);
+        depois = System.nanoTime();
+        if (checaVetorOrdenado(numeros)){
+            return depois-antes;
+        }
         return 0;
+    }
+
+    public static void quickSortAux(int[] array, int left, int right) {
+        if (left < right) {
+            int pivot = partition(array, left, right);
+            quickSortAux(array, left, pivot - 1);
+            quickSortAux(array, pivot + 1, right);
+        }
+    }
+
+    public static int partition(int[] array, int left, int right) {
+        int pivot = array[left];
+        int i = left + 1;
+        int j = right;
+
+        while (i <= j) {
+            if (array[i] <= pivot) {
+                i++;
+            } else if (array[j] > pivot) {
+                j--;
+            } else {
+                swap(array, i, j);
+            }
+        }
+
+        swap(array, left, j);
+        return j;
+    }
+
+    public static void swap(int[] array, int i, int j) {
+        int temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
     }
 
     @Override
