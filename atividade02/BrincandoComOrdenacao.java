@@ -109,12 +109,42 @@ public class BrincandoComOrdenacao {
 			tempos[42] += o.quickSort(vetor15.clone());
 			tempos[43] += o.quickSort(vetor15Reverse.clone());
 			tempos[44] += o.quickSort(vetor15Random.clone());
+
+			tempos[45] += o.random_quickSort(vetor5.clone());
+			tempos[46] += o.random_quickSort(vetor5Reverse.clone());
+			tempos[47] += o.random_quickSort(vetor5Random.clone());
+			tempos[48] += o.random_quickSort(vetor10.clone());
+			tempos[49] += o.random_quickSort(vetor10Reverse.clone());
+			tempos[50] += o.random_quickSort(vetor10Random.clone());
+			tempos[51] += o.random_quickSort(vetor15.clone());
+			tempos[52] += o.random_quickSort(vetor15Reverse.clone());
+			tempos[53] += o.random_quickSort(vetor15Random.clone());
+
+			tempos[54] += o.quickSort_Java(vetor5.clone());
+			tempos[55] += o.quickSort_Java(vetor5Reverse.clone());
+			tempos[56] += o.quickSort_Java(vetor5Random.clone());
+			tempos[57] += o.quickSort_Java(vetor10.clone());
+			tempos[58] += o.quickSort_Java(vetor10Reverse.clone());
+			tempos[59] += o.quickSort_Java(vetor10Random.clone());
+			tempos[60] += o.quickSort_Java(vetor15.clone());
+			tempos[61] += o.quickSort_Java(vetor15Reverse.clone());
+			tempos[62] += o.quickSort_Java(vetor15Random.clone());
+
+			tempos[63] += o.countingSort(vetor5.clone());
+			tempos[64] += o.countingSort(vetor5Reverse.clone());
+			tempos[65] += o.countingSort(vetor5Random.clone());
+			tempos[66] += o.countingSort(vetor10.clone());
+			tempos[67] += o.countingSort(vetor10Reverse.clone());
+			tempos[68] += o.countingSort(vetor10Random.clone());
+			tempos[69] += o.countingSort(vetor15.clone());
+			tempos[70] += o.countingSort(vetor15Reverse.clone());
+			tempos[71] += o.countingSort(vetor15Random.clone());
 			cont++;
 		}
 
 		//For para impressão dos valores
 		for (int i=0;i<9;i++){
-			System.out.println(tempos[i]/50+" "+tempos[i+9]/50+" "+tempos[i+18]/50+" "+tempos[i+27]/50+" "+tempos[i+36]/50);
+			System.out.println("BUBBLE : "+tempos[i]/50+" | SELECTION : "+tempos[i+9]/50+" | INSERTION : "+tempos[i+18]/50+" | MERGE : "+tempos[i+27]/50+" | QUICK : "+tempos[i+36]/50+" | QUICK_RANDOM : "+tempos[i+45]/50+" | JAVA : "+tempos[i+54]/50+" | COUNTING : "+tempos[i+63]/50);
 		}
 		depois = System.nanoTime();
 		System.out.println(depois-antes);

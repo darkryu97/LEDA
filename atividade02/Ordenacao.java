@@ -1,5 +1,8 @@
 package atividade02;
 
+import java.util.Random;
+import java.util.Arrays;
+
 public class Ordenacao implements Ordenacao_IF {
     @Override
     public boolean checaVetorOrdenado(int[] numeros) {
@@ -186,16 +189,80 @@ public class Ordenacao implements Ordenacao_IF {
 
     @Override
     public long random_quickSort(int[] numeros) {
+        long antes = 0,depois = 0;
+        int size = numeros.length;
+        antes = System.nanoTime();
+        quickSortRandom(numeros, 0,size - 1);
+        depois = System.nanoTime();
+        if (checaVetorOrdenado(numeros)){
+            return depois-antes;
+        }
         return 0;
+    }
+
+    public static void quickSortRandom(int[] array, int left, int right) {
+        if (left < right) {
+            int pivot = randomPartition(array, left, right);
+            quickSortRandom(array, left, pivot - 1);
+            quickSortRandom(array, pivot + 1, right);
+        }
+    }
+
+    public static int randomPartition(int[] array, int left, int right) {
+
+        Random rand = new Random();
+        int randomIndex = rand.nextInt(right - left + 1) + left;
+
+        swap(array, randomIndex, right);
+
+        return partition(array, left, right);
     }
 
     @Override
     public long quickSort_Java(int[] numeros) {
+        long antes = 0,depois = 0;
+        antes = System.nanoTime();
+        Arrays.sort(numeros);
+        depois = System.nanoTime();
+        if (checaVetorOrdenado(numeros)){
+            return depois-antes;
+        }
         return 0;
     }
 
     @Override
     public long countingSort(int[] numeros) {
+        int maior = 0;
+        int size = numeros.length;
+        int[] vetorOrdenado = new int[size];
+        //maior valor do vetor
+        for(int i = 0;i < size;i++) {
+            if (numeros[i] > maior) {
+                maior = numeros[i];
+            }
+        }
+        //cria o vetor de coordenadas
+        int[] k = new int[maior+1];
+        long antes = 0,depois = 0;
+        antes = System.nanoTime();
+        //guarda quantas vezes o número aparece
+        for(int i=0;i<size;i++){
+            k[numeros[i]]++;
+        }
+        //soma os valores do vetor para as posições corretas
+        for (int i = 1; i <= maior; i++) {
+            k[i] += k[i - 1];
+        }
+        //Ordena em um novo vetor
+        for (int i = size - 1; i >= 0; i--) {
+            vetorOrdenado[k[numeros[i]] - 1] = numeros[i];
+            k[numeros[i]]--;
+        }
+        depois = System.nanoTime();
+
+        if(checaVetorOrdenado(vetorOrdenado)){
+            return depois-antes;
+        }
         return 0;
     }
 }
