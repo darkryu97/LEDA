@@ -12,7 +12,7 @@ public class FilaComPilhas implements Fila_IF {
                 pilha02.push(pilha01.pop());
             }
 
-            pilha01.push(element);
+            pilha02.push(element);
 
             while (!pilha02.isEmpty()) {
                 pilha01.push(pilha02.pop());
