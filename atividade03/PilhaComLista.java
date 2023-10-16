@@ -1,28 +1,41 @@
 package atividade03;
 
 public class PilhaComLista implements Pilha_IF {
+    public ListaEncadeada lista = new ListaEncadeada();
     @Override
     public void push(Integer element) throws Exception {
-
+        if (isFull()) {
+            throw new Exception("Pilha cheia.");
+        }
+        lista.insert(element);
     }
 
     @Override
-    public int pop() throws Exception {
-        return 0;
+    public Integer pop() throws Exception {
+        if (isEmpty()) {
+            throw new Exception("Pilha vazia.");
+        }
+        int top = lista.valor;
+        lista.valor = lista.prox.valor;
+        lista.prox = lista.prox.prox;
+        return top;
     }
 
     @Override
-    public int top() throws Exception {
-        return 0;
+    public Integer top() throws Exception {
+        if (isEmpty()) {
+            throw new Exception("Pilha vazia.");
+        }
+        return lista.valor;
     }
 
     @Override
     public boolean isEmpty() {
-        return false;
+        return lista.valor == null;
     }
 
     @Override
     public boolean isFull() {
-        return false;
+        return lista.size()==10;
     }
 }

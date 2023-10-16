@@ -1,14 +1,15 @@
 package atividade03;
 
 /*
- * Interface para implementação da classe "ListaEncadeada"
- * que deve ser implementada usando métodos recursivos.
+ * Interface para implementaï¿½ï¿½o da classe "ListaEncadeada"
+ * que deve ser implementada usando mï¿½todos recursivos.
  */
 public interface ListaEncadeada_IF {
 	public boolean isEmpty();
-	public int size();
-	public int search(Integer element) throws Exception; //lançar exceção caso não encontre
-	public void insert(Integer element); //deve-se inserir no início da lista
+	public Integer size();
+	public Integer search(Integer element) throws Exception; //lanï¿½ar exceï¿½ï¿½o caso nï¿½o encontre
+	public void insert(Integer element); //deve-se inserir no inï¿½cio da lista
 	public void remove(Integer element);
-	public int[] toArray();
+	public Integer[] toArray();
+
 }

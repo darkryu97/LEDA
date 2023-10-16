@@ -1,14 +1,14 @@
 package atividade03;
 
 /*
- * Interface para implementação da classe "PilhaComLista",
+ * Interface para implementaï¿½ï¿½o da classe "PilhaComLista",
  * que deve ser implementada usando uma lista encadeada
- * com capacidade máxima de 10 elementos.
+ * com capacidade mï¿½xima de 10 elementos.
  */
 public interface Pilha_IF {
 	public void push(Integer element) throws Exception;
-	public int pop() throws Exception;
-	public int top() throws Exception;
+	public Integer pop() throws Exception;
+	public Integer top() throws Exception;
 	public boolean isEmpty();
 	public boolean isFull();
 }
