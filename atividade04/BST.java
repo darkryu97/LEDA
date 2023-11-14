@@ -62,7 +62,7 @@ public class BST implements BST_IF {
         Integer integerArr[] = preOrder.toArray();
         int intArr[] = new int[cont];
         for (int i=0;cont>i;i++){
-            intArr[i] = integerArr[i];
+            intArr[i] = integerArr[cont-1-i];
         }
         return intArr;
     }
@@ -80,15 +80,15 @@ public class BST implements BST_IF {
         Integer integerArr[] = order.toArray();
         int intArr[] = new int[cont];
         for (int i=0;cont>i;i++){
-            intArr[i] = integerArr[i];
+            intArr[i] = integerArr[cont-1-i];
         }
         return intArr;
     }
     public void orderAux(ListaEncadeada lista,BST arvore){
         if(arvore != null) {
-            preAux(lista,arvore.esq);
+            orderAux(lista,arvore.esq);
             lista.insert(arvore.raiz);
-            preAux(lista,arvore.dir);
+            orderAux(lista,arvore.dir);
         }
     }
     @Override
@@ -98,14 +98,14 @@ public class BST implements BST_IF {
         Integer integerArr[] = posOrder.toArray();
         int intArr[] = new int[cont];
         for (int i=0;cont>i;i++){
-            intArr[i] = integerArr[i];
+            intArr[i] = integerArr[cont-1-i];
         }
         return intArr;
     }
     public void posAux(ListaEncadeada lista,BST arvore){
         if(arvore != null) {
-            preAux(lista,arvore.esq);
-            preAux(lista,arvore.dir);
+            posAux(lista,arvore.esq);
+            posAux(lista,arvore.dir);
             lista.insert(arvore.raiz);
         }
     }
